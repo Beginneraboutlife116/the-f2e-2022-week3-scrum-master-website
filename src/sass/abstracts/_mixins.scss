@@ -1,0 +1,11 @@
+@mixin margin-flow($direction, $key, $value) {
+  .m_#{$direction}-#{$key} {
+    margin-#{$direction}: $value;
+  }
+}
+
+@mixin padding-flow($direction, $key, $value) {
+  .p_#{$direction}-#{$key} {
+    padding-#{$direction}: $value;
+  }
+}

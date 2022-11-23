@@ -1,0 +1,17 @@
+@use "../abstracts" as *;
+
+@each $k, $v in $spaces {
+  @include margin-flow("block", $k, $v);
+  @include margin-flow("block-start", $k, $v);
+  @include margin-flow("block-end", $k, $v);
+  @include margin-flow("inline", $k, $v);
+  @include margin-flow("inline-start", $k, $v);
+  @include margin-flow("inline-end", $k, $v);
+
+  @include padding-flow("block", $k, $v);
+  @include padding-flow("block-start", $k, $v);
+  @include padding-flow("block-end", $k, $v);
+  @include padding-flow("inline", $k, $v);
+  @include padding-flow("inline-start", $k, $v);
+  @include padding-flow("inline-end", $k, $v);
+}

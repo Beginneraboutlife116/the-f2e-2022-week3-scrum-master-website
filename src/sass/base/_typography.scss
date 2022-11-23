@@ -1,0 +1,30 @@
+@use "../abstracts" as *;
+
+@each $k, $v in $font-weight {
+  @font-face {
+    font-family: "Gen Jyuu Gothic";
+    src: local("Gen Jyuu Gothic"),
+      url("../../fonts/GenJyuuGothic-#{$k}.ttf") format("opentype");
+    font-weight: $v;
+  }
+}
+
+@each $k, $v in $font-size-list {
+  .#{$k} {
+    font-size: $v;
+  }
+  @if $k != "notice" or $k != "paragraph" {
+    #{$k} {
+      font-size: $v;
+    }
+  }
+}
+
+body {
+  font-family: "Gen Jyuu Gothic", -apple-system, BlinkMacSystemFont, "Segoe UI",
+    "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+    "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: map-get($map: $font-size-list, $key: "paragraph");
+}
