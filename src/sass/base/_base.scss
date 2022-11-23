@@ -18,3 +18,13 @@
   --neutral-grey-200: #726d7a;
   --neutral-grey-300: #524d5b;
 }
+
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+a:where(:active, :link, :visited) {
+  text-decoration: none;
+}

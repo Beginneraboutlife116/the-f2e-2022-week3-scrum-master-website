@@ -1,34 +1,47 @@
 @use "../../sass/abstracts" as *;
 
 .welcome {
-  background-image: url("../../assets/bg/bg-welcome.svg");
-  min-height: 250vh;
   position: relative;
+  min-height: 100vh;
 
   &__bg {
     &-1 {
-      position: relative;
-      z-index: 1;
+      position: absolute;
     }
     &-2 {
       position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
+      inset: 0;
     }
     &-3 {
       position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 0;
+      inset: 0;
     }
   }
 
-  &__cta {
+  &__button {
     position: absolute;
     right: min(10vw, 8.4375rem);
     top: 75vh;
-    z-index: 2;
+    z-index: 1;
     translate: 0 -50%;
+    color: var(--neutral-white-100);
+    text-align: center;
+    opacity: 0.75;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__description {
+    min-height: 165vh;
+    display: grid;
+    place-content: center;
+    background-image: url('../../assets/bg/bg-welcome.svg');
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+  }
+
+  &__info {
+    translate: 0% 100%;
   }
 }

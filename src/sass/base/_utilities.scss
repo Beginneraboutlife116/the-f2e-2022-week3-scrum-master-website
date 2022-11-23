@@ -15,3 +15,16 @@
   @include padding-flow("inline-start", $k, $v);
   @include padding-flow("inline-end", $k, $v);
 }
+
+@include margin-flow("block", auto, auto);
+@include margin-flow("block-start", auto, auto);
+@include margin-flow("block-end", auto, auto);
+@include margin-flow("inline", auto, auto);
+@include margin-flow("inline-start", auto, auto);
+@include margin-flow("inline-end", auto, auto);
+
+@each $k, $v in $border-radius-list {
+  .bdrs_#{$k} {
+    border-radius: $v;
+  }
+}
