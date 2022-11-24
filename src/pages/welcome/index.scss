@@ -15,6 +15,7 @@
     &-3 {
       position: absolute;
       inset: 0;
+      z-index: 1;
     }
   }
 
@@ -34,14 +35,38 @@
 
   &__description {
     min-height: 165vh;
-    display: grid;
-    place-content: center;
-    background-image: url('../../assets/bg/bg-welcome.svg');
+    background-image: url("../../assets/bg/bg-welcome.svg");
     background-repeat: no-repeat;
     background-position: 0 100%;
+    position: relative;
   }
 
   &__info {
-    translate: 0% 100%;
+    width: min(76%, 68.75rem);
+    min-height: 85vh;
+    position: absolute;
+    bottom: min(4.25rem, 5vw);
+    right: min(3.75rem, 4.5vw);
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+  }
+
+  &__mascot {
+    align-self: flex-end;
+  }
+
+  &__dialog {
+    align-self: start;
+    line-height: 1.75;
+    display: grid;
+    gap: map-get($map: $spaces, $key: 3);
+    grid-template-columns: 1fr 1.875rem;
+    position: relative;
+    z-index: 1;
+
+    & .h3 {
+      grid-column: 1 / -1;
+    }
   }
 }

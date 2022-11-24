@@ -1,0 +1,22 @@
+.dialog {
+  background-color: var(--neutral-white-100);
+  border: 3px solid var(--secondary-brown-300);
+  position: relative;
+
+  &__decoration {
+    position: absolute;
+    border-bottom: var(--width) solid transparent;
+    border-top: var(--width) solid transparent;
+    border-right: var(--length) solid var(--secondary-brown-300);
+    &::after {
+      content: "";
+      position: absolute;
+      border-bottom: calc(var(--width) - var(--border)) solid transparent;
+      border-top: calc(var(--width) - var(--border)) solid transparent;
+      border-right: calc(var(--length) - 2 * var(--border)) solid
+        var(--neutral-white-100);
+      top: calc(calc(var(--width) - var(--border)) * -1);
+      left: calc(var(--border) * 2);
+    }
+  }
+}

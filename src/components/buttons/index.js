@@ -47,7 +47,7 @@ const StepButton = ({ onClick, disabled, ongoing = "next", className }) => {
   )
 }
 
-const ConfirmButton = ({ onClick, confirmType = "accept" }) => {
+const ConfirmButton = ({ onClick, confirmType = "accept", className = "" }) => {
   let content
   if (confirmType === "accept") {
     content = "接受挑戰"
@@ -58,7 +58,7 @@ const ConfirmButton = ({ onClick, confirmType = "accept" }) => {
   return (
     <button
       onClick={onClick}
-      className={`btn__confirm p_inline-7 bdrs_2 btn__confirm_${confirmType}`}>
+      className={`btn__confirm p_inline-7 bdrs_2 btn__confirm_${confirmType} ${className}`}>
       <p className="h4">{content}</p>
     </button>
   )

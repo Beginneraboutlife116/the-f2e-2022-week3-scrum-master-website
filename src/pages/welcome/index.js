@@ -3,6 +3,9 @@ import bg2 from "../../assets/bg/bg-2.svg"
 import bg3 from "../../assets/bg/bg-3.svg"
 import titanMascot from "../../assets/icons/titansoft-mascot.svg"
 import { ReactComponent as WelcomeButtonSvg } from "../../assets/icons/welcome-btn-icon.svg"
+import { ConfirmButton } from "../../components/buttons"
+import { Dialog } from "../../components/dialog"
+
 import "./index.scss"
 
 const Welcome = () => {
@@ -21,8 +24,35 @@ const Welcome = () => {
       </div>
       <div className="welcome__description">
         <div className="welcome__info">
-          <div>SaySomething</div>
-          <img src={titanMascot} alt="鈦坦科技吉祥物" id="titan"></img>
+          <Dialog
+            type="dialog"
+            decorationStyle={{
+              scale: "0.5",
+              rotate: "225deg",
+              left: "94.25%",
+              bottom: "-11.5%",
+              "--width": "40px",
+              "--length": "100px",
+              "--border": "7.5px"
+            }}
+            className="welcome__dialog">
+            <p className="h3">
+              歡迎來到Scrum新手村~我是鈦坦吉祥物Tica!
+              <br /> 首先恭喜你加入 TT 資訊小組！
+              <br />
+              在正式加入專案開發之前，需要請你先了解
+              <br />
+              <strong>Scrum 的流程與精神！</strong>
+              <br />
+              接受挑戰任務，成為Scrum大師吧～
+            </p>
+            <ConfirmButton className="m_inline-start-auto" />
+          </Dialog>
+          <img
+            src={titanMascot}
+            alt="鈦坦科技吉祥物"
+            id="titan"
+            className="welcome__mascot"></img>
         </div>
       </div>
     </>
