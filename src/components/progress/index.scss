@@ -1,0 +1,28 @@
+.progress {
+  width: 100%;
+  min-height: 3rem;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr) auto;
+
+  &__stage {
+    display: grid;
+    align-items: center;
+    justify-items: center;
+    &:not(:last-of-type) {
+      grid-template-columns: repeat(8, 1fr);
+    }
+  }
+
+  &__flag {
+    width: 2.25rem;
+    align-self: flex-end;
+  }
+
+  &__dot {
+    width: 0.5rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+  }
+}

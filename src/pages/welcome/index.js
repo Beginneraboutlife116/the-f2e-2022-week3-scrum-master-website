@@ -15,7 +15,7 @@ const Welcome = () => {
         <img src={bg2} alt="中景" className="welcome__bg-2"></img>
         <img src={bg1} alt="遠景" className="welcome__bg-1"></img>
         <img src={bg3} alt="前景" className="welcome__bg-3"></img>
-        <a href="#titan" className="welcome__button">
+        <a href="#info" className="welcome__button">
           <h1 className="m_block-end-5">開始探索</h1>
           <button aria-label="開始探索！">
             <WelcomeButtonSvg />
@@ -23,7 +23,7 @@ const Welcome = () => {
         </a>
       </div>
       <div className="welcome__description">
-        <div className="welcome__info">
+        <div className="welcome__info" id="info">
           <Dialog
             type="dialog"
             decorationStyle={{
@@ -51,7 +51,6 @@ const Welcome = () => {
           <img
             src={titanMascot}
             alt="鈦坦科技吉祥物"
-            id="titan"
             className="welcome__mascot"></img>
         </div>
       </div>
