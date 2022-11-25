@@ -14,7 +14,10 @@
   }
 
   &__step {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1rem;
+    align-items: center;
+    gap: map-get($map: $spaces, $key: 6);
     transform-origin: center;
     transition: scale 0.1s ease;
     color: var(--neutral-100);

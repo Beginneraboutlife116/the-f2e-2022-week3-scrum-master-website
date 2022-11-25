@@ -5,6 +5,8 @@
   background-image: url("../../assets/bg/introduction-bg.svg");
   background-size: cover;
   color: var(--neutral-100);
+  text-align: center;
+
   &__list {
     padding: 0;
     display: flex;
@@ -16,5 +18,13 @@
       $color: map-get($map: $colors, $key: "primary-900"),
       $alpha: 0.5
     );
+    display: grid;
+    gap: map-get($map: $spaces, $key: 7);
+  }
+}
+
+.character {
+  &__icon {
+    height: 19.6875rem;
   }
 }

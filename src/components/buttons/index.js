@@ -21,7 +21,12 @@ const ChoiceButton = ({ content, onClick, className }) => {
   )
 }
 
-const StepButton = ({ onClick, disabled, ongoing = "next", className }) => {
+const StepButton = ({
+  onClick,
+  disabled,
+  ongoing = "next",
+  className = ""
+}) => {
   const content = {}
   if (ongoing === "next") {
     content.text = "前往下一座島"
