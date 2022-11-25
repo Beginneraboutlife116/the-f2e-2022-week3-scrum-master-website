@@ -3,20 +3,13 @@
 .welcome {
   position: relative;
   min-height: 100vh;
+  background-image: url("../../assets/bg/bg-far.svg"),
+    url("../../assets/bg/bg-middle.svg");
 
-  &__bg {
-    &-1 {
-      position: absolute;
-    }
-    &-2 {
-      position: absolute;
-      inset: 0;
-    }
-    &-3 {
-      position: absolute;
-      inset: 0;
-      z-index: 1;
-    }
+  &__bg_front {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
   }
 
   &__button {
@@ -31,10 +24,14 @@
     &:hover {
       opacity: 1;
     }
+
+    & svg {
+      width: min(60%, 9rem);
+    }
   }
 
   &__description {
-    min-height: 165vh;
+    min-height: 100vh;
     background-image: url("../../assets/bg/bg-welcome.svg");
     background-repeat: no-repeat;
     background-position: 0 100%;
@@ -43,7 +40,7 @@
 
   &__info {
     width: min(76%, 68.75rem);
-    min-height: 85vh;
+    min-height: max(65vh, 41.625rem);
     position: absolute;
     bottom: min(4.25rem, 5vw);
     right: min(3.75rem, 4.5vw);
