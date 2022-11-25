@@ -1,17 +1,13 @@
 @use "../../sass/abstracts" as *;
 
-.introduction {
-  min-height: 100vh;
-  background-image: url("../../assets/bg/introduction-bg.svg");
-  background-size: cover;
-  color: var(--neutral-100);
+.introductions {
+  padding: 0;
+  display: flex;
+  gap: 4.125rem;
   text-align: center;
-
-  &__list {
-    padding: 0;
-    display: flex;
-    gap: 4.125rem;
-    text-align: center;
+  color: var(--neutral-100);
+  &__title {
+    color: var(--neutral-100);
   }
   &__item {
     background-color: rgba(

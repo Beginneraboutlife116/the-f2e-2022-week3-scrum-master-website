@@ -1,9 +1,9 @@
 import { useRef, useState } from "react"
-// import Introduction from "./pages/introduction"
 // import Main from "./pages/main"
 import Welcome from "./pages/welcome"
 import Progress from "./components/progress"
 import { StepButton } from "./components/buttons"
+import Introduction from "./pages/introduction"
 
 function App() {
   const [start, setStart] = useState(false)
@@ -12,16 +12,18 @@ function App() {
     mainRef.current?.scrollIntoView({ behavior: "smooth" })
   }
   return (
-    <>
+    <div>
       {!start && <Welcome onClick={toMain} />}
-      <main className="p_inline-8" ref={mainRef}>
+      <main
+        className={`main ${!start ? "bg__introduction" : ""}`}
+        ref={mainRef}>
         <Progress />
-        <div>{<h1>Hello</h1>}</div>
-        <footer className="p_block-6">
+        <div className="main__container p_inline-8">{<Introduction />}</div>
+        <footer className="footer p_block-6">
           <StepButton className="m_inline-start-auto" />
         </footer>
       </main>
-    </>
+    </div>
   )
 }
 

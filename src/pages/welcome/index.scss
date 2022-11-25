@@ -5,6 +5,7 @@
   min-height: 100vh;
   background-image: url("../../assets/bg/bg-far.svg"),
     url("../../assets/bg/bg-middle.svg");
+  background-size: cover, cover;
 
   &__bg_front {
     position: absolute;

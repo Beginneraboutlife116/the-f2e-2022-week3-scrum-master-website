@@ -1,0 +1,16 @@
+@use "../abstracts" as *;
+
+.main {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  justify-items: center;
+  &__container {
+    overflow-x: hidden;
+    scroll-padding-inline: map-get($map: $spaces, $key: 8);
+  }
+}
+
+.footer {
+  width: calc(100% - 2 * map-get($map: $spaces, $key: 8));
+}
