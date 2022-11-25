@@ -2,14 +2,14 @@
 
 .btn {
   &__choice {
-    background-color: rgba($color: var(--neutral-white-100), $alpha: 0.85);
+    background-color: rgba($color: var(--neutral-100), $alpha: 0.85);
     display: flex;
     gap: map-get($map: $spaces, $key: 5);
-    color: var(--secondary-brown-300);
+    color: var(--secondary-brown-900);
     &:hover {
-      border: 5px solid var(--secondary-brown-300);
+      border: 5px solid var(--secondary-brown-900);
       color: var(--secondary-green-100);
-      background-color: var(--neutral-white-100);
+      background-color: var(--neutral-100);
     }
   }
 
@@ -17,22 +17,22 @@
     display: flex;
     transform-origin: center;
     transition: scale 0.1s ease;
-    color: var(--neutral-white-100);
+    color: var(--neutral-100);
     &:hover {
       scale: 1.07;
     }
     &:disabled {
-      color: var(--neutral-grey-100);
+      color: var(--neutral-400);
     }
   }
 
   &__confirm {
     text-align: center;
     padding-block: 1rem;
-    color: var(--secondary-brown-300);
+    color: var(--secondary-brown-900);
 
     &_accept {
-      background-color: var(--primary-light);
+      background-color: var(--primary-100);
       box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
       &:hover {
         background: linear-gradient(
@@ -40,7 +40,7 @@
             rgba(0, 0, 0, 0.1),
             rgba(0, 0, 0, 0.1)
           ),
-          var(--primary-light);
+          var(--primary-100);
       }
       &:active {
         box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.25);
