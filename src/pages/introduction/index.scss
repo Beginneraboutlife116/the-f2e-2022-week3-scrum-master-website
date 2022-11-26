@@ -1,14 +1,17 @@
 @use "../../sass/abstracts" as *;
 
-.introductions {
-  padding: 0;
-  display: flex;
-  gap: 4.125rem;
+.introduction {
   text-align: center;
   color: var(--neutral-100);
-  &__title {
-    color: var(--neutral-100);
+  // flex: 0 0 100%;
+  // scroll-padding-inline: map-get($map: $spaces, $key: 8);
+
+  &__list {
+    padding: 0;
+    display: flex;
+    gap: 4.125rem;
   }
+
   &__item {
     background-color: rgba(
       $color: map-get($map: $colors, $key: "primary-900"),

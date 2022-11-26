@@ -5,9 +5,15 @@
   display: grid;
   grid-template-rows: auto 1fr auto;
   justify-items: center;
+  background-color: var(--primary-100);
+  position: relative;
   &__container {
     overflow-x: hidden;
-    scroll-padding-inline: map-get($map: $spaces, $key: 8);
+    display: flex;
+    gap: map-get($map: $spaces, $key: 8);
+  }
+  &__inner-page {
+    flex: 0 0 100%;
   }
 }
 

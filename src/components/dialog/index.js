@@ -18,4 +18,4 @@ const Dialog = ({ children, type, decorationStyle, className }) => {
   )
 }
 
-export { Dialog }
+export default Dialog

@@ -2,7 +2,7 @@ import bgFront from "../../assets/bg/bg-front.svg"
 import titanMascot from "../../assets/icons/titansoft-mascot.svg"
 import { ReactComponent as WelcomeButtonSvg } from "../../assets/icons/welcome-btn-icon.svg"
 import { ConfirmButton } from "../../components/buttons"
-import { Dialog } from "../../components/dialog"
+import Dialog from "../../components/dialog"
 import { useRef } from "react"
 
 import "./index.scss"
@@ -37,7 +37,7 @@ const Welcome = ({ onClick }) => {
               <br />
               接受挑戰任務，成為Scrum大師吧～
             </p>
-            <ConfirmButton className="m_inline-start-auto" onClick={onClick} />
+            <ConfirmButton className="m_inline-start-auto" onClick={onClick} confirmType="accept" />
           </Dialog>
           <img
             src={titanMascot}

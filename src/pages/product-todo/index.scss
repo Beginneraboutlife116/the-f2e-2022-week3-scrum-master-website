@@ -1,0 +1,63 @@
+@use "../../sass/abstracts" as *;
+
+.product-todo {
+  // scroll-margin-inline: map-get($map: $spaces, $key: 8);
+  &__title {
+    color: var(--neutral-100);
+    font-weight: map-get($map: $font-weight, $key: "Bold");
+  }
+  &__backdrop {
+    display: grid;
+    place-items: center;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(20px);
+    width: 100vw;
+    height: 100%;
+    inset: 0;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+  }
+
+  &__modal {
+    display: grid;
+    width: min(81.6%, 73.375rem);
+    grid-template-columns: min(26%, 18.75rem) 1fr;
+    gap: clamp(1.5rem, calc(-0.51rem + 8.59vw), 7rem);
+    &-body {
+      display: grid;
+    }
+  }
+  &__message {
+    text-align: left;
+    line-height: 1.75;
+    margin-block-end: min(10vmin, 4rem);
+  }
+}
+
+@keyframes modal-show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-close {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.backdrop_show {
+  animation-name: modal-show;
+}
+
+.backdrop_close {
+  animation-name: modal-close;
+}

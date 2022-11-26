@@ -52,7 +52,7 @@ const StepButton = ({
   )
 }
 
-const ConfirmButton = ({ onClick, confirmType = "accept", className = "" }) => {
+const ConfirmButton = ({ onClick, confirmType, className }) => {
   let content
   if (confirmType === "accept") {
     content = "接受挑戰"
@@ -63,7 +63,9 @@ const ConfirmButton = ({ onClick, confirmType = "accept", className = "" }) => {
   return (
     <button
       onClick={onClick}
-      className={`btn__confirm p_inline-7 bdrs_2 btn__confirm_${confirmType} ${className}`}>
+      className={`btn__confirm p_inline-7 bdrs_2 btn__confirm_${confirmType} ${
+        className ?? ""
+      }`}>
       <p className="h4">{content}</p>
     </button>
   )
