@@ -24,15 +24,11 @@ function App() {
         className={`main ${!start ? "bg__introduction" : ""}`}
         ref={mainRef}>
         <Progress />
-        <div className="main__container p_inline-8">
+        <div className="main__container">
           {
             <>
-              {true && (
-                <Introduction className="main__inner-page" />
-              )}
-              {true && (
-                <ProductTodo className="main__inner-page" />
-              )}
+              {true && <Introduction className="main__inner-page" />}
+              {true && <ProductTodo className="main__inner-page" />}
             </>
           }
         </div>

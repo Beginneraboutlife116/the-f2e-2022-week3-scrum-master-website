@@ -9,8 +9,10 @@
   position: relative;
   &__container {
     overflow-x: hidden;
+    overflow-x: scroll;
     display: flex;
-    gap: map-get($map: $spaces, $key: 8);
+    gap: map-get($map: $spaces, $key: 8) * 2;
+    width: calc(100% - 2 * map-get($map: $spaces, $key: 8));
   }
   &__inner-page {
     flex: 0 0 100%;
