@@ -21,4 +21,10 @@
 
 .footer {
   width: calc(100% - 2 * map-get($map: $spaces, $key: 8));
+  &_in-progress {
+    background-color: var(--secondary-brown-900);
+    box-shadow: 0 0 0 100vmax var(--secondary-brown-900);
+    clip-path: inset(0 -100vmax);
+    display: flex;
+  }
 }

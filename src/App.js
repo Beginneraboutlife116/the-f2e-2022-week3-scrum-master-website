@@ -32,8 +32,13 @@ function App() {
             </>
           }
         </div>
-        <footer className="footer p_block-6">
-          <StepButton className="m_inline-start-auto" onClick={toScrumMaster} />
+        <footer className={`footer p_block-6 ${start && "footer_in-progress"}`}>
+          {start && <StepButton className="m_inline-end-auto" ongoing="prev" />}
+          <StepButton
+            className="m_inline-start-auto"
+            onClick={toScrumMaster}
+            ongoing="next"
+          />
         </footer>
       </main>
     </div>

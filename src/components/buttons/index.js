@@ -21,12 +21,7 @@ const ChoiceButton = ({ content, onClick, className }) => {
   )
 }
 
-const StepButton = ({
-  onClick,
-  disabled,
-  ongoing = "next",
-  className = ""
-}) => {
+const StepButton = ({ onClick, disabled, ongoing, className = "" }) => {
   const content = {}
   if (ongoing === "next") {
     content.text = "前往下一座島"
@@ -45,7 +40,7 @@ const StepButton = ({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`btn__step ${className}`}>
+      className={`btn__step btn__step_${ongoing} ${className}`}>
       <p className="h4">{content.text}</p>
       {content.icon}
     </button>

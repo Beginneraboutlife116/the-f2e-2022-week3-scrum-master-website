@@ -15,7 +15,6 @@
 
   &__step {
     display: grid;
-    grid-template-columns: 1fr 1rem;
     align-items: center;
     gap: map-get($map: $spaces, $key: 6);
     transform-origin: center;
@@ -26,6 +25,12 @@
     }
     &:disabled {
       color: var(--neutral-400);
+    }
+    &_next {
+      grid-template-columns: 1fr 1rem;
+    }
+    &_prev {
+      grid-template-columns: 1rem 1fr;
     }
   }
 
