@@ -2,7 +2,7 @@
   "name": "the-f2e-week3",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://beginneraboutlife116.github.io/the-f2e-week3-scrum-master-website",
+  "homepage": "https://beginneraboutlife116.github.io/the-f2e-2022-week3-scrum-master-website",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
