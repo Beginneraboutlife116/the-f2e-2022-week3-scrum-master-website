@@ -1,0 +1,41 @@
+{
+  "files": {
+    "main.css": "/the-f2e-2022-week3-scrum-master-website/static/css/main.6a92557c.css",
+    "main.js": "/the-f2e-2022-week3-scrum-master-website/static/js/main.bc5cce7e.js",
+    "static/js/787.35727b43.chunk.js": "/the-f2e-2022-week3-scrum-master-website/static/js/787.35727b43.chunk.js",
+    "static/media/GenJyuuGothic-Heavy.ttf": "/the-f2e-2022-week3-scrum-master-website/static/media/GenJyuuGothic-Heavy.e52d1524344494658a8a.ttf",
+    "static/media/GenJyuuGothic-Bold.ttf": "/the-f2e-2022-week3-scrum-master-website/static/media/GenJyuuGothic-Bold.3afa3f748abc963dcfe7.ttf",
+    "static/media/GenJyuuGothic-Medium.ttf": "/the-f2e-2022-week3-scrum-master-website/static/media/GenJyuuGothic-Medium.8f5595ccdad1467ec673.ttf",
+    "static/media/GenJyuuGothic-Normal.ttf": "/the-f2e-2022-week3-scrum-master-website/static/media/GenJyuuGothic-Normal.f9efdb146a504cab4c41.ttf",
+    "static/media/GenJyuuGothic-Light.ttf": "/the-f2e-2022-week3-scrum-master-website/static/media/GenJyuuGothic-Light.b9dd213ac715950604da.ttf",
+    "static/media/GenJyuuGothic-ExtraLight.ttf": "/the-f2e-2022-week3-scrum-master-website/static/media/GenJyuuGothic-ExtraLight.7714276ee57c796818f9.ttf",
+    "static/media/bg-middle.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/bg-middle.c57816d973ccee293f27.svg",
+    "static/media/bg-front.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/bg-front.518afd1a61642ae1a3ca33c991ccfab6.svg",
+    "static/media/bg-far.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/bg-far.8a9fe69bb056037d8055.svg",
+    "static/media/titansoft-mascot.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/titansoft-mascot.fc6c84a4373d4e008b057e22756573c2.svg",
+    "static/media/development-team.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/development-team.4fc1768760beb1def98d358321cfa6b8.svg",
+    "static/media/product-owner.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/product-owner.4209fa3f87e18c2711c4d4e7a2cf48bb.svg",
+    "static/media/scrum-master.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/scrum-master.6284fa79e5c33ffc4819ac4000dcbbfd.svg",
+    "static/media/introduction-bg.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/introduction-bg.fd19ebb94a058027463b.svg",
+    "static/media/product-owner-avatar.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/product-owner-avatar.1120d7c66cff6dd511a590794e339f1e.svg",
+    "static/media/bg-backlog.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/bg-backlog.810617e2767da1687a21.svg",
+    "static/media/bg-welcome.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/bg-welcome.508fc62e97021665a98e.svg",
+    "static/media/unfinished-icon.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/unfinished-icon.ad8c05d611962ecb472c2eb51994aa4f.svg",
+    "static/media/jira-icon.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/jira-icon.7a37a8fb414e72676f034a1cdda2aa9a.svg",
+    "static/media/welcome-btn-icon.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/welcome-btn-icon.667d9ec701981056203be243e70acd8c.svg",
+    "index.html": "/the-f2e-2022-week3-scrum-master-website/index.html",
+    "static/media/priority-line.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/priority-line.a546a15ce512b13eacde.svg",
+    "static/media/arrow-prev-icon.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/arrow-prev-icon.14aa186adbe1004489404cd70467b79e.svg",
+    "static/media/current-icon.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/current-icon.308c263fe51364129fa16fd6712c5047.svg",
+    "static/media/arrow-next-icon.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/arrow-next-icon.8b416fcc231c754977989c61fcafc50b.svg",
+    "static/media/choice-selected-icon.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/choice-selected-icon.b8baa43de6fd569be5e3b816a3263707.svg",
+    "static/media/choice-default-icon.svg": "/the-f2e-2022-week3-scrum-master-website/static/media/choice-default-icon.26a57c4a39220bfb68e859fd1ce8205e.svg",
+    "main.6a92557c.css.map": "/the-f2e-2022-week3-scrum-master-website/static/css/main.6a92557c.css.map",
+    "main.bc5cce7e.js.map": "/the-f2e-2022-week3-scrum-master-website/static/js/main.bc5cce7e.js.map",
+    "787.35727b43.chunk.js.map": "/the-f2e-2022-week3-scrum-master-website/static/js/787.35727b43.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.6a92557c.css",
+    "static/js/main.bc5cce7e.js"
+  ]
+}
