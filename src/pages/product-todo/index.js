@@ -3,17 +3,42 @@ import productOwnerAvatar from "../../assets/characters/product-owner-avatar.svg
 import jiraIcon from "../../assets/icons/jira-icon.svg"
 import "./index.scss"
 import { ConfirmButton } from "../../components/buttons"
-import { useRef, useState } from "react"
+import { useRef, useState, useEffect } from "react"
+import Sortable from "sortablejs"
 
 const ProductTodo = ({ className }) => {
   const [isOpen, setIsOpen] = useState(true)
   const modalRef = useRef(null)
+  const dragRef = useRef(null)
+  const dropRef = useRef(null)
   const removeModal = () => {
     if (!isOpen) {
       modalRef.current.remove()
     }
   }
   const closeModal = () => setIsOpen(false)
+  useEffect(() => {
+    const { current: drag } = dragRef
+    const { current: drop } = dropRef
+    Sortable.create(drag, {
+      group: { name: "todos", put: false },
+      // put 可否放置？誰可放置？(by using `[ ]`)
+      handle: ".product-todo__todo",
+      // 可以被選取的那一個className
+      chosenClass: "dragging",
+      sort: false
+      // 在這一個group內，能否發生sort？
+    })
+    Sortable.create(drop, {
+      group: { name: "backlog", pull: false, put: ["todos"] },
+      // name不一定要一樣，除非兩者是要shared的
+      // pull 可否被拖拉？那個名稱的可以被拖拉
+      sort: true,
+      ghostClass: "dragging",
+      // Class name for the drop placeholder
+      
+    })
+  })
   return (
     <div className={`product-todo p_block-start-5 ${className ?? ""}`}>
       <div
@@ -81,18 +106,26 @@ const ProductTodo = ({ className }) => {
         </Dialog>
       </div>
       <section className="product-todo__practice">
-        <ul className="product-todo__todos">
-          <li className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2">
+        <ul className="product-todo__todos" ref={dragRef}>
+          <li
+            className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+            draggable={true}>
             <p>會員系統（登入、註冊、管理）</p>
           </li>
-          <li className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2">
+          <li
+            className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+            draggable={true}>
             <p>應徵者的線上履歷編輯器</p>
           </li>
-          <li className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2">
+          <li
+            className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+            draggable={true}>
             <p>前台職缺列表</p>
             <p>（缺詳細內容、點選可發送應徵意願）</p>
           </li>
-          <li className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2">
+          <li
+            className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+            draggable={true}>
             <p>後台職缺管理功能</p>
             <p>（資訊上架、下架、顯示應徵者資料）</p>
           </li>
@@ -102,20 +135,13 @@ const ProductTodo = ({ className }) => {
             產品待辦清單<span>Product Backlog</span>
           </p>
           <div className="product-todo__backlog-container">
-            <div>
-              <p className="m_block-end-5">優先度</p>
-              <ul className="product-todo__answer">
-                <li className="product-todo__answer-dropped bdrs_2"></li>
-                <li className="product-todo__answer-dropped bdrs_2"></li>
-                <li className="product-todo__answer-dropped bdrs_2"></li>
-                <li className="product-todo__answer-dropped bdrs_2"></li>
-              </ul>
-            </div>
-            <div className="product-todo__priority">
-              <p>高</p>
-              <div className="product-todo__priority-line"></div>
-              <p>低</p>
-            </div>
+            <p className="product-todo__priority_title">優先度</p>
+            <ul
+              className="product-todo__answer p_block-start-2"
+              ref={dropRef}></ul>
+            <p className="product-todo__priority_high">高</p>
+            <div className="product-todo__priority_line"></div>
+            <p className="product-todo__priority_low">低</p>
           </div>
         </section>
       </section>
