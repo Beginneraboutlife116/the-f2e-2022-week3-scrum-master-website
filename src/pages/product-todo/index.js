@@ -5,8 +5,10 @@ import "./index.scss"
 import { ConfirmButton } from "../../components/buttons"
 import { useRef, useState, useEffect } from "react"
 import Sortable from "sortablejs"
+import Progress from "../../components/progress"
+import Footer from "../../components/footer"
 
-const ProductTodo = ({ className }) => {
+const ProductTodo = ({ className, isStart }) => {
   const [isOpen, setIsOpen] = useState(true)
   const modalRef = useRef(null)
   const dragRef = useRef(null)
@@ -34,13 +36,12 @@ const ProductTodo = ({ className }) => {
       // name不一定要一樣，除非兩者是要shared的
       // pull 可否被拖拉？那個名稱的可以被拖拉
       sort: true,
-      ghostClass: "dragging",
+      ghostClass: "dragging"
       // Class name for the drop placeholder
-      
     })
   })
   return (
-    <div className={`product-todo p_block-start-5 ${className ?? ""}`}>
+    <div className={`product-todo ${className ?? ""}`}>
       <div
         className={`product-todo__backdrop ${
           isOpen ? "backdrop_show" : "backdrop_close"
@@ -83,68 +84,72 @@ const ProductTodo = ({ className }) => {
           </div>
         </div>
       </div>
-      <div className="product-todo__dialog">
-        <img src={productOwnerAvatar} alt="產品負責人" />
-        <Dialog
-          type="dialog"
-          className="p_inline-end-5"
-          decorationStyle={{
-            top: "45%",
-            left: "-60px",
-            "--width": "20px",
-            "--length": "60px",
-            "--border": "3px"
-          }}>
-          <p>
-            請試著把需求放到產品待辦清單，並調整待辦的優先度順序。
-            <br />
-            我們公司也推薦使用 Jira 來做任務的管理呢！
-          </p>
-          <a href="https://www.atlassian.com/software/jira">
-            <img src={jiraIcon} alt="Jira圖示" />
-          </a>
-        </Dialog>
-      </div>
-      <section className="product-todo__practice">
-        <ul className="product-todo__todos" ref={dragRef}>
-          <li
-            className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
-            draggable={true}>
-            <p>會員系統（登入、註冊、管理）</p>
-          </li>
-          <li
-            className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
-            draggable={true}>
-            <p>應徵者的線上履歷編輯器</p>
-          </li>
-          <li
-            className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
-            draggable={true}>
-            <p>前台職缺列表</p>
-            <p>（缺詳細內容、點選可發送應徵意願）</p>
-          </li>
-          <li
-            className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
-            draggable={true}>
-            <p>後台職缺管理功能</p>
-            <p>（資訊上架、下架、顯示應徵者資料）</p>
-          </li>
-        </ul>
-        <section className="product-todo__backlog m_block-end-3 p_block-start-3">
-          <p className="product-todo__backlog-title h2">
-            產品待辦清單<span>Product Backlog</span>
-          </p>
-          <div className="product-todo__backlog-container">
-            <p className="product-todo__priority_title">優先度</p>
-            <ul
-              className="product-todo__answer p_block-start-2"
-              ref={dropRef}></ul>
-            <p className="product-todo__priority_high">高</p>
-            <div className="product-todo__priority_line"></div>
-            <p className="product-todo__priority_low">低</p>
-          </div>
+      <Progress />
+      <div className="product-todo__container m_block-start-6">
+        <div className="product-todo__dialog p_inline-start-8">
+          <img src={productOwnerAvatar} alt="產品負責人" />
+          <Dialog
+            type="dialog"
+            className="p_inline-end-5"
+            decorationStyle={{
+              top: "45%",
+              left: "-60px",
+              "--width": "20px",
+              "--length": "60px",
+              "--border": "3px"
+            }}>
+            <p>
+              請試著把需求放到產品待辦清單，並調整待辦的優先度順序。
+              <br />
+              我們公司也推薦使用 Jira 來做任務的管理呢！
+            </p>
+            <a href="https://www.atlassian.com/software/jira">
+              <img src={jiraIcon} alt="Jira圖示" />
+            </a>
+          </Dialog>
+        </div>
+        <section className="product-todo__practice p_inline-8">
+          <ul className="product-todo__todos" ref={dragRef}>
+            <li
+              className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+              draggable={true}>
+              <p>會員系統（登入、註冊、管理）</p>
+            </li>
+            <li
+              className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+              draggable={true}>
+              <p>應徵者的線上履歷編輯器</p>
+            </li>
+            <li
+              className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+              draggable={true}>
+              <p>前台職缺列表</p>
+              <p>（缺詳細內容、點選可發送應徵意願）</p>
+            </li>
+            <li
+              className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+              draggable={true}>
+              <p>後台職缺管理功能</p>
+              <p>（資訊上架、下架、顯示應徵者資料）</p>
+            </li>
+          </ul>
+          <section className="product-todo__backlog m_block-end-3 p_block-start-3">
+            <p className="product-todo__backlog-title h2">
+              產品待辦清單<span>Product Backlog</span>
+            </p>
+            <div className="product-todo__backlog-container">
+              <p className="product-todo__priority_title">優先度</p>
+              <ul
+                className="product-todo__answer p_block-start-2"
+                ref={dropRef}></ul>
+              <p className="product-todo__priority_high">高</p>
+              <div className="product-todo__priority_line"></div>
+              <p className="product-todo__priority_low">低</p>
+            </div>
+          </section>
         </section>
-      </section>
+      </div>
+      <Footer className="product-todo__footer" isStart={isStart} />
     </div>
   )
 }

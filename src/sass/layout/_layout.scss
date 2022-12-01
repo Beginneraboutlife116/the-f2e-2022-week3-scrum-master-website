@@ -2,29 +2,16 @@
 
 .main {
   min-height: 100vh;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  justify-items: center;
   background-color: var(--primary-100);
-  position: relative;
+  overflow-x: hidden;
+  overflow-x: scroll;
+  display: flex;
   &__container {
-    overflow-x: hidden;
-    overflow-x: scroll;
-    display: flex;
-    gap: map-get($map: $spaces, $key: 8) * 2;
-    width: calc(100% - 2 * map-get($map: $spaces, $key: 8));
+    display: grid;
+    grid-template-rows: auto 1fr auto;
   }
   &__inner-page {
     flex: 0 0 100%;
   }
 }
 
-.footer {
-  width: calc(100% - 2 * map-get($map: $spaces, $key: 8));
-  &_in-progress {
-    background-color: var(--secondary-brown-900);
-    box-shadow: 0 0 0 100vmax var(--secondary-brown-900);
-    clip-path: inset(0 -100vmax);
-    display: flex;
-  }
-}

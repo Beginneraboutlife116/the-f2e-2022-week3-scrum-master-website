@@ -5,7 +5,7 @@ import "./index.scss"
 
 const Progress = () => {
   return (
-    <ul className="progress">
+    <ul className="progress p_inline-8">
       <li className="progress__stage">
         <img src={currentFlag} alt="現在的位置" className="progress__flag" />
         <div className="progress__dot"></div>

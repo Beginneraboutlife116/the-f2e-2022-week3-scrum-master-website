@@ -1,13 +1,16 @@
 import productOwner from "../../assets/characters/product-owner.svg"
 import scrumMaster from "../../assets/characters/scrum-master.svg"
 import developmentTeam from "../../assets/characters/development-team.svg"
+import Progress from "../../components/progress"
 import "./index.scss"
+import Footer from "../../components/footer"
 
-const Introduction = ({ className }) => {
+const Introduction = ({ className, onNextClick }) => {
   return (
     <div className={`introduction ${className ?? ""}`}>
+      <Progress />
       <h1 className="m_block-start-6 m_block-end-5">角色介紹</h1>
-      <ul className="introduction__list">
+      <ul className="introduction__list p_inline-8">
         <li className="introduction__item character bdrs_3 p_block-6 p_inline-7">
           <img
             src={productOwner}
@@ -47,6 +50,7 @@ const Introduction = ({ className }) => {
           </p>
         </li>
       </ul>
+      <Footer onNextClick={onNextClick} />
     </div>
   )
 }

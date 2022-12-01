@@ -3,10 +3,10 @@
 .introduction {
   text-align: center;
   color: var(--neutral-100);
-  // scroll-padding-inline: map-get($map: $spaces, $key: 8);
+  background-image: url("../../assets/bg/introduction-bg.svg");
+  background-size: cover;
 
   &__list {
-    padding: 0;
     display: grid;
     gap: 4.125rem;
     grid-template-columns: repeat(3, 1fr);
@@ -24,6 +24,6 @@
 
 .character {
   &__icon {
-    height: 19.6875rem;
+    max-height: 19.6875rem;
   }
 }
