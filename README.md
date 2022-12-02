@@ -7,11 +7,11 @@
 首先先
 
 ```
-git clone url
+git clone https://github.com/Beginneraboutlife116/the-f2e-2022-week3-scrum-master-website.git
 ```
 
 ```
-cd target directory
+cd the-f2e-2022-week3-scrum-master-website
 ```
 
 ```
