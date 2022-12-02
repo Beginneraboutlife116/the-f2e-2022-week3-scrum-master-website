@@ -8,6 +8,7 @@
     color: var(--neutral-100);
     font-weight: map-get($map: $font-weight, $key: "Bold");
   }
+
   &__backdrop {
     display: grid;
     place-items: center;
@@ -20,7 +21,7 @@
     animation-duration: 1s;
     animation-timing-function: linear;
     animation-fill-mode: forwards;
-    z-index: 2;
+    z-index: 1;
   }
 
   &__modal {
@@ -28,10 +29,12 @@
     width: min(81.6%, 73.375rem);
     grid-template-columns: min(26%, 18.75rem) 1fr;
     gap: clamp(1.5rem, calc(-0.51rem + 8.59vw), 7rem);
+
     &-body {
       display: grid;
     }
   }
+
   &__message {
     line-height: 1.75;
     margin-block-end: min(10vmin, 4rem);
@@ -41,19 +44,16 @@
     display: grid;
     grid-template-rows: auto 1fr;
     gap: map-get($map: $spaces, $key: 5);
-    position: relative;
-    &::after {
-      content: "";
-      position: absolute;
-      width: 100vw;
-      aspect-ratio: 144 / 11;
-      background-image: url("../../assets/bg/product-todo-bg.svg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      top: auto;
-      bottom: 0;
-      z-index: 0;
-    }
+  }
+
+  &__bg {
+    background-image: url("../../assets/bg/product-todo-bg.svg");
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: contain;
+    height: 100%;
+    grid-area: 1 / 1 / -1 / -1;
+    align-items: flex-end;
   }
 
   &__dialog {
@@ -61,6 +61,8 @@
     display: grid;
     grid-template-columns: 6.25rem 1fr;
     gap: 4rem;
+    grid-area: 1 / 1 / 2 / -1;
+
     & .dialog {
       display: grid;
       grid-template-columns: 1fr 7.5rem;
@@ -71,7 +73,7 @@
     display: grid;
     grid-template-columns: 45% 47%;
     justify-content: space-between;
-    z-index: 1;
+    grid-area: 2 / 1 / -1 / -1;
   }
 
   &__todo {
@@ -89,12 +91,14 @@
     &:nth-child(2n) {
       margin-inline-start: auto;
     }
+
     &s {
       align-self: center;
       padding: 0;
       display: grid;
       gap: 2rem;
     }
+
     & p + p {
       font-size: map-get($map: $font-size-list, $key: "paragraph");
     }
@@ -108,8 +112,10 @@
     display: grid;
     grid-template-rows: auto 1fr;
     text-align: center;
+
     &-title {
       color: map-get($map: $colors, $key: "neutral-600");
+
       & span {
         font-size: map-get($map: $font-size-list, $key: "h4");
       }
@@ -136,6 +142,7 @@
     gap: map-get($map: $spaces, $key: 4);
     align-items: flex-end;
   }
+
   &__priority {
     &_title {
       text-align: right;
@@ -143,16 +150,19 @@
       color: var(--neutral-100);
       opacity: 0.5;
     }
+
     &_line {
       background-image: url("../../assets/icons/priority-line.svg");
       background-size: cover;
       grid-area: line;
     }
+
     &_high {
       grid-area: high;
       color: var(--neutral-100);
       opacity: 0.5;
     }
+
     &_low {
       grid-area: low;
       color: var(--neutral-100);
@@ -192,7 +202,6 @@
 }
 
 .dragging {
-  scale: 0.6;
   opacity: 0.75;
-  border: 3px solid var(--secondary-brown-900);
+  border: 3px inset var(--secondary-brown-900);
 }

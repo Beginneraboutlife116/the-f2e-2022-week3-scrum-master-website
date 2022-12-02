@@ -86,6 +86,7 @@ const ProductTodo = ({ className, isStart }) => {
       </div>
       <Progress />
       <div className="product-todo__container m_block-start-6">
+        <div className="product-todo__bg"></div>
         <div className="product-todo__dialog p_inline-start-8">
           <img src={productOwnerAvatar} alt="產品負責人" />
           <Dialog
@@ -144,7 +145,7 @@ const ProductTodo = ({ className, isStart }) => {
                 ref={dropRef}></ul>
               <p className="product-todo__priority_high">高</p>
               <div className="product-todo__priority_line"></div>
-              <p className="product-todo__priority_low">低</p>
+              <p className="product-todo__priority_low p_block-end-4">低</p>
             </div>
           </section>
         </section>
