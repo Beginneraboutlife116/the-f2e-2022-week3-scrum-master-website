@@ -37,6 +37,16 @@
   &__message {
     line-height: 1.75;
     margin-block-end: min(10vmin, 4rem);
+
+    &_correct {
+      color: map-get($map: $colors, $key: "secondary-green-400");
+      font-weight: map-get($map: $font-weight, $key: "Bold");
+    }
+
+    &_incorrect {
+      color: map-get($map: $colors, $key: "other-900");
+      font-weight: map-get($map: $font-weight, $key: "Bold");
+    }
   }
 
   &__container {
@@ -60,10 +70,11 @@
     grid-template-columns: 6.25rem 1fr;
     gap: 4rem;
     grid-area: 1 / 1 / 2 / -1;
+    align-items: center;
 
     & .dialog {
-      display: grid;
-      grid-template-columns: 1fr 7.5rem;
+      display: flex;
+      align-items: center;
     }
   }
 

@@ -25,6 +25,7 @@
     }
     &:disabled {
       color: var(--neutral-400);
+      scale: 1;
     }
     &_next {
       grid-template-columns: 1fr 1rem;

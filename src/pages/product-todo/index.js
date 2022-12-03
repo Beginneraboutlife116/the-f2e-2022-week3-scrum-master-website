@@ -6,13 +6,24 @@ import { ConfirmButton } from "../../components/buttons"
 import { useRef, useState, useEffect } from "react"
 import Sortable from "sortablejs"
 
-const ProductTodo = ({
-  productTodoRef
-}) => {
+const ProductTodo = ({ productTodoRef, setButtonDisabled }) => {
   const [isOpen, setIsOpen] = useState(true)
+  const [hint, setHint] = useState(
+    <>
+      <p>
+        請試著把需求放到產品待辦清單，並調整待辦的優先度順序。
+        <br />
+        我們公司也推薦使用 Jira 來做任務的管理呢！
+      </p>
+      <a href="https://www.atlassian.com/software/jira">
+        <img src={jiraIcon} alt="Jira圖示" />
+      </a>
+    </>
+  )
   const modalRef = useRef(null)
   const dragRef = useRef(null)
   const dropRef = useRef(null)
+  // const hint = useRef()
   const removeModal = () => {
     if (!isOpen) {
       modalRef.current.remove()
@@ -36,10 +47,34 @@ const ProductTodo = ({
       // name不一定要一樣，除非兩者是要shared的
       // pull 可否被拖拉？那個名稱的可以被拖拉
       sort: true,
-      ghostClass: "dragging"
+      ghostClass: "dragging",
+      dataIdAttr: "data-id",
       // Class name for the drop placeholder
+      onSort() {
+        const sortAnswer = [4, 1, 2, 3].toString()
+        const userSortResult = this.toArray().toString()
+        if (this.toArray().length !== 4) return
+        if (sortAnswer === userSortResult) {
+          setHint(
+            <>
+              <p className="product-todo__message_correct">
+                可以前進下一個主題囉！
+              </p>
+            </>
+          )
+          setButtonDisabled()
+        } else {
+          setHint(
+            <>
+              <p className="product-todo__message_incorrect">
+                順序好像不太對!可以再調整一下唷~
+              </p>
+            </>
+          )
+        }
+      }
     })
-  })
+  }, [setButtonDisabled])
   return (
     <div className="product-todo scrum__inner" ref={productTodoRef}>
       <div
@@ -86,49 +121,46 @@ const ProductTodo = ({
       </div>
       <div className="product-todo__container m_block-start-6">
         <div className="product-todo__bg"></div>
-        <div className="product-todo__dialog p_inline-start-8">
+        <div className="product-todo__dialog m_inline-start-8">
           <img src={productOwnerAvatar} alt="產品負責人" />
           <Dialog
             type="dialog"
             className="p_inline-end-5"
             decorationStyle={{
-              top: "45%",
+              top: "35%",
               left: "-60px",
               "--width": "20px",
               "--length": "60px",
               "--border": "3px"
             }}>
-            <p>
-              請試著把需求放到產品待辦清單，並調整待辦的優先度順序。
-              <br />
-              我們公司也推薦使用 Jira 來做任務的管理呢！
-            </p>
-            <a href="https://www.atlassian.com/software/jira">
-              <img src={jiraIcon} alt="Jira圖示" />
-            </a>
+            {hint}
           </Dialog>
         </div>
         <section className="product-todo__practice p_inline-8">
           <ul className="product-todo__todos" ref={dragRef}>
             <li
               className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
-              draggable={true}>
+              draggable={true}
+              data-id={1}>
               <p>會員系統（登入、註冊、管理）</p>
             </li>
             <li
               className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
-              draggable={true}>
+              draggable={true}
+              data-id={2}>
               <p>應徵者的線上履歷編輯器</p>
             </li>
             <li
               className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
-              draggable={true}>
+              draggable={true}
+              data-id={3}>
               <p>前台職缺列表</p>
               <p>（缺詳細內容、點選可發送應徵意願）</p>
             </li>
             <li
               className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
-              draggable={true}>
+              draggable={true}
+              data-id={4}>
               <p>後台職缺管理功能</p>
               <p>（資訊上架、下架、顯示應徵者資料）</p>
             </li>

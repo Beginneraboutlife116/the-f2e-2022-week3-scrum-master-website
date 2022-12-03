@@ -8,6 +8,7 @@ import Footer from "./components/footer"
 function App() {
   const [currentPage, setCurrentPage] = useState(0)
   const [startScrum, setStartScrum] = useState(false)
+  const [disabled, setDisabled] = useState(false)
   const introductionRef = useRef(null)
   const productTodoRef = useRef(null)
   useEffect(() => {
@@ -34,13 +35,18 @@ function App() {
           <div className="scrum__container">
             <ProductTodo
               productTodoRef={productTodoRef}
+              setButtonDisabled={() => setDisabled(false)}
             />
             <div style={{ flex: "0 0 100%", backgroundColor: "green" }}></div>
             <div style={{ flex: "0 0 100%", backgroundColor: "blue" }}></div>
           </div>
           <Footer
+            disabled={disabled}
             currentPage={currentPage === 0 ? 1 : currentPage}
-            onNextClick={() => setCurrentPage(currentPage + 1)}
+            onNextClick={() => {
+              setCurrentPage(currentPage + 1)
+              setDisabled(true)
+            }}
             onPrevClick={() => setCurrentPage(currentPage - 1)}
           />
         </section>
