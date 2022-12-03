@@ -1,15 +1,17 @@
 import { StepButton } from "../buttons"
 import "./index.scss"
 
-const Footer = ({ className, onNextClick, onPrevClick, isStart }) => {
+const Footer = ({ className, onNextClick, onPrevClick, currentPage }) => {
   return (
     <footer className={`p_block-6 footer p_inline-8 ${className ?? ""}`}>
-      {isStart && <StepButton ongoing="prev" onClick={onPrevClick} />}
-      <StepButton
-        className="m_inline-start-auto"
-        ongoing="next"
-        onClick={onNextClick}
-      />
+      {currentPage !== 0 && <StepButton ongoing="prev" onClick={onPrevClick} />}
+      {currentPage !== 5 && (
+        <StepButton
+          className="m_inline-start-auto"
+          ongoing="next"
+          onClick={onNextClick}
+        />
+      )}
     </footer>
   )
 }

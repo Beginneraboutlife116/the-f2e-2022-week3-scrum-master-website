@@ -3,31 +3,27 @@ import currentFlag from "../../assets/icons/current-icon.svg"
 import completeFlag from "../../assets/icons/complete-icon.svg"
 import "./index.scss"
 
-const Progress = ({ currentProgress }) => {
+const Progress = ({ currentPage }) => {
   const progressTemplate = []
   for (let i = 0; i <= 5; i++) {
     const img =
-      currentProgress === i
+      currentPage === i
         ? currentFlag
-        : currentProgress > i
+        : currentPage > i
         ? completeFlag
         : unfinishedFlag
     const alt =
-      currentProgress === i
-        ? "現在的位置"
-        : currentProgress > i
-        ? "已完成"
-        : "未完成"
-    const dotDecoration = currentProgress > i ? "progress__dot_finished" : ""
+      currentPage === i ? "現在的位置" : currentPage > i ? "已完成" : "未完成"
+    const dotDecoration = currentPage > i ? "progress__dot_finished" : ""
     let template
     if (i === 5) {
       template = (
         <>
           <img
             src={
-              currentProgress === 5
+              currentPage === 5
                 ? currentFlag
-                : currentProgress > 5
+                : currentPage > 5
                 ? completeFlag
                 : unfinishedFlag
             }
