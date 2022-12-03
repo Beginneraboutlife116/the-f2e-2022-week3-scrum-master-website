@@ -5,13 +5,8 @@ import "./index.scss"
 import { ConfirmButton } from "../../components/buttons"
 import { useRef, useState, useEffect } from "react"
 import Sortable from "sortablejs"
-import Progress from "../../components/progress"
-import Footer from "../../components/footer"
 
 const ProductTodo = ({
-  className,
-  onNextClick,
-  onPrevClick,
   productTodoRef
 }) => {
   const [isOpen, setIsOpen] = useState(true)
@@ -46,7 +41,7 @@ const ProductTodo = ({
     })
   })
   return (
-    <div className={`product-todo ${className ?? ""}`} ref={productTodoRef}>
+    <div className="product-todo scrum__inner" ref={productTodoRef}>
       <div
         className={`product-todo__backdrop ${
           isOpen ? "backdrop_show" : "backdrop_close"
@@ -89,7 +84,6 @@ const ProductTodo = ({
           </div>
         </div>
       </div>
-      <Progress currentPage={1} />
       <div className="product-todo__container m_block-start-6">
         <div className="product-todo__bg"></div>
         <div className="product-todo__dialog p_inline-start-8">
@@ -144,23 +138,17 @@ const ProductTodo = ({
               產品待辦清單<span>Product Backlog</span>
             </p>
             <div className="product-todo__backlog-container">
-              <p className="product-todo__priority_title">優先度</p>
+              <p className="product-todo__priority-title">優先度</p>
               <ul
                 className="product-todo__answer p_block-start-2"
                 ref={dropRef}></ul>
-              <p className="product-todo__priority_high">高</p>
-              <div className="product-todo__priority_line"></div>
-              <p className="product-todo__priority_low p_block-end-4">低</p>
+              <p className="product-todo__priority-high">高</p>
+              <div className="product-todo__priority-line"></div>
+              <p className="product-todo__priority-low p_block-end-4">低</p>
             </div>
           </section>
         </section>
       </div>
-      <Footer
-        className="product-todo__footer"
-        currentPage={1}
-        onNextClick={onNextClick}
-        onPrevClick={onPrevClick}
-      />
     </div>
   )
 }

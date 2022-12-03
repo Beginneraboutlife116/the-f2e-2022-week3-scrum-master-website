@@ -2,6 +2,8 @@ import { useEffect, useRef, useState } from "react"
 import Welcome from "./pages/welcome"
 import Introduction from "./pages/introduction"
 import ProductTodo from "./pages/product-todo"
+import Progress from "./components/progress"
+import Footer from "./components/footer"
 
 function App() {
   const [currentPage, setCurrentPage] = useState(0)
@@ -20,19 +22,28 @@ function App() {
       {!startScrum && <Welcome onClick={toIntroduction} />}
       <main className="main">
         <Introduction
-          className="main__inner-page main__container"
+          className="main__inner main__container"
           onNextClick={() => {
             setCurrentPage(currentPage + 1)
             setStartScrum(true)
           }}
           introductionRef={introductionRef}
         />
-        <ProductTodo
-          className="main__inner-page main__container"
-          onNextClick={() => setCurrentPage(currentPage + 1)}
-          onPrevClick={() => setCurrentPage(currentPage - 1)}
-          productTodoRef={productTodoRef}
-        />
+        <section className="scrum main__container main__inner">
+          <Progress currentPage={currentPage === 0 ? 1 : currentPage} />
+          <div className="scrum__container">
+            <ProductTodo
+              productTodoRef={productTodoRef}
+            />
+            <div style={{ flex: "0 0 100%", backgroundColor: "green" }}></div>
+            <div style={{ flex: "0 0 100%", backgroundColor: "blue" }}></div>
+          </div>
+          <Footer
+            currentPage={currentPage === 0 ? 1 : currentPage}
+            onNextClick={() => setCurrentPage(currentPage + 1)}
+            onPrevClick={() => setCurrentPage(currentPage - 1)}
+          />
+        </section>
       </main>
     </div>
   )

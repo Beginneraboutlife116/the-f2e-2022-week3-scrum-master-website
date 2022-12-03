@@ -2,4 +2,9 @@
 
 .footer {
   display: flex;
+
+  &_in-scrum {
+    background-color: map-get($map: $colors, $key: "secondary-brown-900");
+  }
 }
+

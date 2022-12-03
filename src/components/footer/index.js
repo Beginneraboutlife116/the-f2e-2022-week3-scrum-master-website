@@ -3,7 +3,7 @@ import "./index.scss"
 
 const Footer = ({ className, onNextClick, onPrevClick, currentPage }) => {
   return (
-    <footer className={`p_block-6 footer p_inline-8 ${className ?? ""}`}>
+    <footer className={`p_block-6 footer p_inline-8 ${currentPage !== 0 && "footer_in-scrum"}`}>
       {currentPage !== 0 && <StepButton ongoing="prev" onClick={onPrevClick} />}
       {currentPage !== 5 && (
         <StepButton

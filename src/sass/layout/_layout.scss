@@ -6,12 +6,25 @@
   overflow-x: hidden;
   overflow-x: scroll;
   display: flex;
+  position: relative;
   &__container {
     display: grid;
     grid-template-rows: auto 1fr auto;
   }
-  &__inner-page {
+  &__inner {
     flex: 0 0 100%;
   }
 }
 
+.scrum {
+  position: relative;
+
+  &__container {
+    display: flex;
+    overflow-x: scroll;
+  }
+
+  &__inner {
+    flex: 0 0 100%;
+  }
+}

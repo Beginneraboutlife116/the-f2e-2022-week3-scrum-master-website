@@ -1,7 +1,6 @@
 @use "../../sass/abstracts" as *;
 
 .product-todo {
-  position: relative;
   display: grid;
 
   &__title {
@@ -53,7 +52,6 @@
     background-size: contain;
     height: 100%;
     grid-area: 1 / 1 / -1 / -1;
-    align-items: flex-end;
   }
 
   &__dialog {
@@ -144,34 +142,30 @@
   }
 
   &__priority {
-    &_title {
+    &-title {
       text-align: right;
       grid-area: title;
       color: var(--neutral-100);
       opacity: 0.5;
     }
 
-    &_line {
+    &-line {
       background-image: url("../../assets/icons/priority-line.svg");
       background-size: cover;
       grid-area: line;
     }
 
-    &_high {
+    &-high {
       grid-area: high;
       color: var(--neutral-100);
       opacity: 0.5;
     }
 
-    &_low {
+    &-low {
       grid-area: low;
       color: var(--neutral-100);
       opacity: 0.5;
     }
-  }
-
-  &__footer {
-    background-color: map-get($map: $colors, $key: "secondary-brown-900");
   }
 }
 
