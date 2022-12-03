@@ -8,7 +8,7 @@ import Footer from "../../components/footer"
 const Introduction = ({ className, onNextClick }) => {
   return (
     <div className={`introduction ${className ?? ""}`}>
-      <Progress />
+      <Progress currentProgress={0} />
       <h1 className="m_block-start-6 m_block-end-5">角色介紹</h1>
       <ul className="introduction__list p_inline-8">
         <li className="introduction__item character bdrs_3 p_block-6 p_inline-7">

@@ -84,7 +84,7 @@ const ProductTodo = ({ className, isStart }) => {
           </div>
         </div>
       </div>
-      <Progress />
+      <Progress currentProgress={1} />
       <div className="product-todo__container m_block-start-6">
         <div className="product-todo__bg"></div>
         <div className="product-todo__dialog p_inline-start-8">

@@ -26,5 +26,9 @@
     border-radius: 50%;
     background-color: var(--primary-900);
     opacity: 0.5;
+
+    &_finished {
+      opacity: 1;
+    }
   }
 }
