@@ -5,10 +5,10 @@ import Progress from "../../components/progress"
 import "./index.scss"
 import Footer from "../../components/footer"
 
-const Introduction = ({ className, onNextClick }) => {
+const Introduction = ({ className, onNextClick, introductionRef }) => {
   return (
-    <div className={`introduction ${className ?? ""}`}>
-      <Progress currentProgress={0} />
+    <div className={`introduction ${className ?? ""}`} ref={introductionRef}>
+      <Progress currentPage={0} />
       <h1 className="m_block-start-6 m_block-end-5">角色介紹</h1>
       <ul className="introduction__list p_inline-8">
         <li className="introduction__item character bdrs_3 p_block-6 p_inline-7">
@@ -50,7 +50,7 @@ const Introduction = ({ className, onNextClick }) => {
           </p>
         </li>
       </ul>
-      <Footer onNextClick={onNextClick} />
+      <Footer onNextClick={onNextClick} currentPage={0} />
     </div>
   )
 }

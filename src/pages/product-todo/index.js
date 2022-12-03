@@ -8,7 +8,12 @@ import Sortable from "sortablejs"
 import Progress from "../../components/progress"
 import Footer from "../../components/footer"
 
-const ProductTodo = ({ className, isStart }) => {
+const ProductTodo = ({
+  className,
+  onNextClick,
+  onPrevClick,
+  productTodoRef
+}) => {
   const [isOpen, setIsOpen] = useState(true)
   const modalRef = useRef(null)
   const dragRef = useRef(null)
@@ -41,7 +46,7 @@ const ProductTodo = ({ className, isStart }) => {
     })
   })
   return (
-    <div className={`product-todo ${className ?? ""}`}>
+    <div className={`product-todo ${className ?? ""}`} ref={productTodoRef}>
       <div
         className={`product-todo__backdrop ${
           isOpen ? "backdrop_show" : "backdrop_close"
@@ -84,7 +89,7 @@ const ProductTodo = ({ className, isStart }) => {
           </div>
         </div>
       </div>
-      <Progress currentProgress={1} />
+      <Progress currentPage={1} />
       <div className="product-todo__container m_block-start-6">
         <div className="product-todo__bg"></div>
         <div className="product-todo__dialog p_inline-start-8">
@@ -150,7 +155,12 @@ const ProductTodo = ({ className, isStart }) => {
           </section>
         </section>
       </div>
-      <Footer className="product-todo__footer" isStart={isStart} />
+      <Footer
+        className="product-todo__footer"
+        currentPage={1}
+        onNextClick={onNextClick}
+        onPrevClick={onPrevClick}
+      />
     </div>
   )
 }
