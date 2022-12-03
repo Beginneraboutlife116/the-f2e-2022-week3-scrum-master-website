@@ -35,7 +35,7 @@ const Progress = ({ currentPage }) => {
     } else {
       template = (
         <>
-          <img src={img} alt={alt} />
+          <img src={img} alt={alt} className="progress__flag" />
           <div className={`progress__dot ${dotDecoration}`}></div>
           <div className={`progress__dot ${dotDecoration}`}></div>
           <div className={`progress__dot ${dotDecoration}`}></div>

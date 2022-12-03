@@ -1,0 +1,72 @@
+@use "../../sass/abstracts" as *;
+
+.sprint-point {
+  &__modal_container {
+    width: min(90%, 77.625rem);
+    display: grid;
+    gap: map-get($map: $spaces, $key: 6);
+  }
+  &__modal {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: map-get($map: $spaces, $key: 7);
+    align-items: center;
+
+    &_title {
+      color: map-get($map: $colors, $key: "neutral-100");
+      font-weight: map-get($map: $font-weight, $key: "Bold");
+    }
+
+    &_left {
+      display: grid;
+      & img {
+        width: min(85%, 6.25rem);
+      }
+    }
+  }
+
+  &__practice {
+    display: flex;
+    justify-content: space-between;
+    color: map-get($map: $colors, $key: "neutral-100");
+    font-weight: map-get($map: $font-weight, $key: "Bold");
+
+    &_title {
+      margin-block-end: 6rem;
+
+      & span {
+        font-size: map-get($map: $font-size-list, $key: "paragraph");
+      }
+    }
+  }
+
+  &__backlog {
+    padding-inline-start: 0;
+    display: grid;
+    gap: 2rem;
+  }
+
+  &__todo {
+    background-color: rgba(
+      $color: map-get($map: $colors, $key: "secondary-green-100"),
+      $alpha: 0.85
+    );
+    box-shadow: 10px 10px map-get($map: $colors, $key: "secondary-brown-900");
+    display: flex;
+    width: 36.5625rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: map-get($map: $spaces, $key: 5);
+
+    &_left {
+      & p + p {
+        font-size: map-get($map: $font-size-list, $key: "paragraph");
+      }
+    }
+
+    &_right {
+      display: flex;
+    }
+  }
+}

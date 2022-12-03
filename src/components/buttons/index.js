@@ -58,7 +58,7 @@ const ConfirmButton = ({ onClick, confirmType, className }) => {
   return (
     <button
       onClick={onClick}
-      className={`btn__confirm p_inline-7 bdrs_2 btn__confirm_${confirmType} ${
+      className={`btn__confirm p_inline-7 border-radius_2 btn__confirm_${confirmType} ${
         className ?? ""
       }`}>
       <p className="h4">{content}</p>

@@ -24,7 +24,48 @@
 @include margin-flow("inline-end", auto, auto);
 
 @each $k, $v in $border-radius-list {
-  .bdrs_#{$k} {
+  .border-radius_#{$k} {
     border-radius: $v;
   }
+}
+
+.backdrop {
+  display: grid;
+  place-items: center;
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  width: 100vw;
+  height: 100%;
+  inset: 0;
+  animation-duration: 1s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+  z-index: 1;
+}
+
+@keyframes modal-show {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes modal-close {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.backdrop_show {
+  animation-name: modal-show;
+}
+
+.backdrop_close {
+  animation-name: modal-close;
 }

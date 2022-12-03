@@ -3,11 +3,12 @@ import productOwnerAvatar from "../../assets/characters/product-owner-avatar.svg
 import jiraIcon from "../../assets/icons/jira-icon.svg"
 import "./index.scss"
 import { ConfirmButton } from "../../components/buttons"
+import { useModal } from "../../utilities"
 import { useRef, useState, useEffect } from "react"
 import Sortable from "sortablejs"
 
 const ProductTodo = ({ productTodoRef, setButtonDisabled }) => {
-  const [isOpen, setIsOpen] = useState(true)
+  const [isModalShowed, modalRef, closeModal, removeModal] = useModal()
   const [hint, setHint] = useState(
     <>
       <p>
@@ -20,16 +21,8 @@ const ProductTodo = ({ productTodoRef, setButtonDisabled }) => {
       </a>
     </>
   )
-  const modalRef = useRef(null)
   const dragRef = useRef(null)
   const dropRef = useRef(null)
-  // const hint = useRef()
-  const removeModal = () => {
-    if (!isOpen) {
-      modalRef.current.remove()
-    }
-  }
-  const closeModal = () => setIsOpen(false)
   useEffect(() => {
     const { current: drag } = dragRef
     const { current: drop } = dropRef
@@ -76,10 +69,10 @@ const ProductTodo = ({ productTodoRef, setButtonDisabled }) => {
     })
   }, [setButtonDisabled])
   return (
-    <div className="product-todo scrum__inner" ref={productTodoRef}>
+    <section className="product-todo scrum__inner" ref={productTodoRef}>
       <div
-        className={`product-todo__backdrop ${
-          isOpen ? "backdrop_show" : "backdrop_close"
+        className={`backdrop ${
+          isModalShowed ? "backdrop_show" : "backdrop_close"
         }`}
         onAnimationEnd={removeModal}
         ref={modalRef}>
@@ -139,26 +132,26 @@ const ProductTodo = ({ productTodoRef, setButtonDisabled }) => {
         <section className="product-todo__practice p_inline-8">
           <ul className="product-todo__todos" ref={dragRef}>
             <li
-              className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+              className="product-todo__todo p_inline-6 p_block-5 h3 border-radius_2"
               draggable={true}
               data-id={1}>
               <p>會員系統（登入、註冊、管理）</p>
             </li>
             <li
-              className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+              className="product-todo__todo p_inline-6 p_block-5 h3 border-radius_2"
               draggable={true}
               data-id={2}>
               <p>應徵者的線上履歷編輯器</p>
             </li>
             <li
-              className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+              className="product-todo__todo p_inline-6 p_block-5 h3 border-radius_2"
               draggable={true}
               data-id={3}>
               <p>前台職缺列表</p>
               <p>（缺詳細內容、點選可發送應徵意願）</p>
             </li>
             <li
-              className="product-todo__todo p_inline-6 p_block-5 h3 bdrs_2"
+              className="product-todo__todo p_inline-6 p_block-5 h3 border-radius_2"
               draggable={true}
               data-id={4}>
               <p>後台職缺管理功能</p>
@@ -181,7 +174,7 @@ const ProductTodo = ({ productTodoRef, setButtonDisabled }) => {
           </section>
         </section>
       </div>
-    </div>
+    </section>
   )
 }
 

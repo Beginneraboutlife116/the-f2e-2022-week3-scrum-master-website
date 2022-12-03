@@ -9,7 +9,7 @@ const Dialog = ({ children, type, decorationStyle, className }) => {
     paddingClassName = "p_block-5 p_inline-start-6"
   }
   return (
-    <div className={`dialog ${paddingClassName} bdrs_3 ${className}`}>
+    <div className={`dialog ${paddingClassName} border-radius_3 ${className}`}>
       {children}
       {decorationStyle && (
         <div className="dialog__decoration" style={decorationStyle}></div>

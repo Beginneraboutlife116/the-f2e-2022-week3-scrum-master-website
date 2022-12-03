@@ -11,7 +11,7 @@ const Introduction = ({ className, onNextClick, introductionRef }) => {
       <Progress currentPage={0} />
       <h1 className="m_block-start-6 m_block-end-5">角色介紹</h1>
       <ul className="introduction__list p_inline-8">
-        <li className="introduction__item character bdrs_3 p_block-6 p_inline-7">
+        <li className="introduction__item character border-radius_3 p_block-6 p_inline-7">
           <img
             src={productOwner}
             alt="產品負責人"
@@ -25,7 +25,7 @@ const Introduction = ({ className, onNextClick, introductionRef }) => {
             產品方向及願景，定義產品細節、優先級別、交付時間，清楚的表達及排序產品待辦事項。
           </p>
         </li>
-        <li className="introduction__item character bdrs_3 p_block-6 p_inline-7">
+        <li className="introduction__item character border-radius_3 p_block-6 p_inline-7">
           <img src={scrumMaster} alt="敏捷教練" className="character__icon" />
           <div>
             <h2>敏捷教練</h2>
@@ -35,7 +35,7 @@ const Introduction = ({ className, onNextClick, introductionRef }) => {
             確保開發團隊遵循Scrum的價值觀，使團隊能正確且合理地運作。教育組織內部，幫助團隊理解Scrum。
           </p>
         </li>
-        <li className="introduction__item character bdrs_3 p_block-6 p_inline-7">
+        <li className="introduction__item character border-radius_3 p_block-6 p_inline-7">
           <img
             src={developmentTeam}
             alt="開發團隊"

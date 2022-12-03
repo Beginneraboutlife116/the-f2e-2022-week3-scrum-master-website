@@ -4,6 +4,7 @@ import Introduction from "./pages/introduction"
 import ProductTodo from "./pages/product-todo"
 import Progress from "./components/progress"
 import Footer from "./components/footer"
+import SprintPoint from "./pages/sprint-point"
 
 function App() {
   const [currentPage, setCurrentPage] = useState(0)
@@ -11,8 +12,13 @@ function App() {
   const [disabled, setDisabled] = useState(false)
   const introductionRef = useRef(null)
   const productTodoRef = useRef(null)
+  const sprintPointRef = useRef(null)
   useEffect(() => {
-    const pages = [introductionRef.current, productTodoRef.current]
+    const pages = [
+      introductionRef.current,
+      productTodoRef.current,
+      sprintPointRef.current
+    ]
     pages[currentPage].scrollIntoView({ behavior: "smooth" })
   }, [currentPage])
   const toIntroduction = () => {
@@ -27,6 +33,7 @@ function App() {
           onNextClick={() => {
             setCurrentPage(currentPage + 1)
             setStartScrum(true)
+            setDisabled(true)
           }}
           introductionRef={introductionRef}
         />
@@ -37,15 +44,17 @@ function App() {
               productTodoRef={productTodoRef}
               setButtonDisabled={() => setDisabled(false)}
             />
-            <div style={{ flex: "0 0 100%", backgroundColor: "green" }}></div>
+            <SprintPoint sprintPointRef={sprintPointRef} />
             <div style={{ flex: "0 0 100%", backgroundColor: "blue" }}></div>
           </div>
           <Footer
             disabled={disabled}
             currentPage={currentPage === 0 ? 1 : currentPage}
             onNextClick={() => {
+              if (currentPage === 1) {
+                setDisabled(true)
+              }
               setCurrentPage(currentPage + 1)
-              setDisabled(true)
             }}
             onPrevClick={() => setCurrentPage(currentPage - 1)}
           />
