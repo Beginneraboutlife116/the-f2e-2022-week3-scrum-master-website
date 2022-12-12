@@ -5,10 +5,40 @@ import productOwnerAvatar from "../../assets/characters/product-owner-avatar.svg
 import scrumMasterAvatar from "../../assets/characters/scrum-master-avatar.svg"
 import whiteStone from "../../assets/icons/white-stone.svg"
 import { useModal } from "../../utilities"
+import { sprintPoint } from "../../data"
+import { Dragger, DroppableHint } from "../../components/dragger"
 import "./index.scss"
+import { useState } from "react"
+
+const dragOrDrop = (item, index) => {
+  if (item.substring(0, 4) === "drag") {
+    const dragger = sprintPoint.drags[item]
+    return (
+      <Dragger
+        index={index}
+        className="sprint-point__todo p_block-4"
+        key={item}>
+        <div className="sprint-point__todo_left">
+          <p>{dragger.content.firstLine}</p>
+          <p>{dragger.content.secondLine ?? undefined}</p>
+        </div>
+        <div className="sprint-point__todo_right">
+          <img src={whiteStone} alt="短衝分數" />
+          <span>x{dragger.point}</span>
+        </div>
+      </Dragger>
+    )
+  }
+  if (item.substring(0, 4) === "drop") {
+    return (
+      <DroppableHint index={index} key={item} className="sprint-point__drop" />
+    )
+  }
+}
 
 const SprintPoint = ({ sprintPointRef }) => {
   const [isModalShowed, modalRef, closeModal, removeModal] = useModal()
+  const [pointData, setPointData] = useState(sprintPoint)
   return (
     <section className="sprint-point scrum__inner" ref={sprintPointRef}>
       <div
@@ -75,50 +105,16 @@ const SprintPoint = ({ sprintPointRef }) => {
           />
         </div>
       </div>
+      <div className="sprint-point__bg"></div>
       <div className="m_block-start-6 sprint-point__practice p_inline-8">
         <div className="sprint-point__practice_left">
           <p className="h2 sprint-point__practice_title">
             產品待辦清單<span>Product Backlog</span>
           </p>
-          <ul className="sprint-point__backlog">
-            <li className="sprint-point__todo p_block-5 border-radius_2 h3">
-              <div className="sprint-point__todo_left">
-                <p>後台職缺管理功能</p>
-                <p>(資訊上架、下架、顯示應徵者資)</p>
-              </div>
-              <div className="sprint-point__todo_right">
-                <img src={whiteStone} alt="短衝分數" />
-                <span>x5</span>
-              </div>
-            </li>
-            <li className="sprint-point__todo p_block-5 border-radius_2 h3">
-              <div className="sprint-point__todo_left">
-                <p>前台職缺列表</p>
-                <p>(缺詳細內容、點選可發送應徵意願)</p>
-              </div>
-              <div className="sprint-point__todo_right">
-                <img src={whiteStone} alt="短衝分數" />
-                <span>x5</span>
-              </div>
-            </li>
-            <li className="sprint-point__todo p_block-5 border-radius_2 h3">
-              <div className="sprint-point__todo_left">
-                <p>會員系統(登入、註冊、管理)</p>
-              </div>
-              <div className="sprint-point__todo_right">
-                <img src={whiteStone} alt="短衝分數" />
-                <span>x8</span>
-              </div>
-            </li>
-            <li className="sprint-point__todo p_block-5 border-radius_2 h3">
-              <div className="sprint-point__todo_left">
-                <p>應徵者的線上履歷編輯器</p>
-              </div>
-              <div className="sprint-point__todo_right">
-                <img src={whiteStone} alt="短衝分數" />
-                <span>x13</span>
-              </div>
-            </li>
+          <ul className="sprint-point__column_left">
+            {pointData["column-left"].map((item, index) => {
+              return dragOrDrop(item, index)
+            })}
           </ul>
         </div>
         <div className="sprint-point__practice_right">
@@ -126,7 +122,11 @@ const SprintPoint = ({ sprintPointRef }) => {
             <p>開發 A 組的短衝待辦清單</p>
             <div className="sprint-point__point"></div>
           </div>
-          <ul className="sprint-point__todos"></ul>
+          <ul className="sprint-point__column_right">
+            {pointData["column-right"].map((item, index) => {
+              return dragOrDrop(item, index)
+            })}
+          </ul>
         </div>
       </div>
     </section>

@@ -1,6 +1,8 @@
 @use "../../sass/abstracts" as *;
 
 .sprint-point {
+  display: grid;
+
   &__modal_container {
     width: min(90%, 77.625rem);
     display: grid;
@@ -25,25 +27,45 @@
     }
   }
 
+  &__bg {
+    background-image: url("../../assets/bg/bg-sprint-point.svg"),
+      url("../../assets/bg/bg-sprint-point-grass.svg");
+    background-repeat: no-repeat;
+    background-position: 50% 100%, 0% 100%;
+    background-size: 120%, contain;
+    height: 100%;
+    grid-area: 1 / 1 / -1 / -1;
+    overflow: hidden;
+  }
+
   &__practice {
     display: flex;
     justify-content: space-between;
     color: map-get($map: $colors, $key: "neutral-100");
     font-weight: map-get($map: $font-weight, $key: "Bold");
+    grid-area: 1 / 1 / -1 / -1;
 
     &_title {
       margin-block-end: 6rem;
+      color: map-get($map: $colors, $key: "secondary-brown-900");
 
       & span {
         font-size: map-get($map: $font-size-list, $key: "paragraph");
       }
     }
+
+    &_right {
+      width: 593px;
+    }
   }
 
-  &__backlog {
-    padding-inline-start: 0;
-    display: grid;
-    gap: 2rem;
+  &__column {
+    &_left {
+      padding-inline-start: 0;
+    }
+    &_right {
+      padding-inline-start: 0;
+    }
   }
 
   &__todo {
@@ -51,13 +73,19 @@
       $color: map-get($map: $colors, $key: "secondary-green-100"),
       $alpha: 0.85
     );
-    box-shadow: 10px 10px map-get($map: $colors, $key: "secondary-brown-900");
+    // box-shadow: 10px 10px map-get($map: $colors, $key: "secondary-brown-900");
     display: flex;
     width: 36.5625rem;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
+    // justify-content: center;
+    // align-items: center;
+    // text-align: center;
     gap: map-get($map: $spaces, $key: 5);
+
+    margin-block-end: 2rem;
+
+    &:last-of-type {
+      margin-block-end: 0;
+    }
 
     &_left {
       & p + p {
@@ -67,6 +95,14 @@
 
     &_right {
       display: flex;
+    }
+  }
+
+  &__drop {
+    min-height: 5.8125rem;
+    margin-block-end: 3rem;
+    &:last-of-type {
+      margin-block-end: 0;
     }
   }
 }

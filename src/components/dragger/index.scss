@@ -1,0 +1,13 @@
+@use "../../sass/abstracts" as *;
+
+.dragger {
+  box-shadow: 10px 10px map-get($map: $colors, $key: "secondary-brown-900");
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.droppable-hint {
+  border: 3px dashed map-get($map: $colors, $key: "neutral-100");
+}
