@@ -28,21 +28,13 @@ const ProductTodo = ({ productTodoRef, setButtonDisabled }) => {
     const { current: drop } = dropRef
     Sortable.create(drag, {
       group: { name: "todos", put: false },
-      // put 可否放置？誰可放置？(by using `[ ]`)
       handle: ".product-todo__todo",
-      // 可以被選取的那一個className
-      chosenClass: "dragging",
       sort: false
-      // 在這一個group內，能否發生sort？
     })
     Sortable.create(drop, {
       group: { name: "backlog", pull: false, put: ["todos"] },
-      // name不一定要一樣，除非兩者是要shared的
-      // pull 可否被拖拉？那個名稱的可以被拖拉
       sort: true,
-      ghostClass: "dragging",
       dataIdAttr: "data-id",
-      // Class name for the drop placeholder
       onSort() {
         const sortAnswer = [4, 1, 2, 3].toString()
         const userSortResult = this.toArray().toString()
@@ -55,7 +47,7 @@ const ProductTodo = ({ productTodoRef, setButtonDisabled }) => {
               </p>
             </>
           )
-          setButtonDisabled()
+          setButtonDisabled(false)
         } else {
           setHint(
             <>
@@ -64,6 +56,7 @@ const ProductTodo = ({ productTodoRef, setButtonDisabled }) => {
               </p>
             </>
           )
+          setButtonDisabled(true)
         }
       }
     })

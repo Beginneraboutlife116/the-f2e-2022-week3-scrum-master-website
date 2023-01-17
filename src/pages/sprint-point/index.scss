@@ -46,7 +46,6 @@
     grid-area: 1 / 1 / -1 / -1;
 
     &_title {
-      margin-block-end: 6rem;
       color: map-get($map: $colors, $key: "secondary-brown-900");
 
       & span {
@@ -62,6 +61,7 @@
   &__column {
     &_left {
       padding-inline-start: 0;
+      margin-block-start: 6rem;
     }
     &_right {
       padding-inline-start: 0;
@@ -73,13 +73,10 @@
       $color: map-get($map: $colors, $key: "secondary-green-100"),
       $alpha: 0.85
     );
-    // box-shadow: 10px 10px map-get($map: $colors, $key: "secondary-brown-900");
     display: flex;
     width: 36.5625rem;
-    // justify-content: center;
-    // align-items: center;
-    // text-align: center;
     gap: map-get($map: $spaces, $key: 5);
+    cursor: url("../../assets/icons/drag-icon.svg"), auto;
 
     margin-block-end: 2rem;
 
@@ -104,5 +101,25 @@
     &:last-of-type {
       margin-block-end: 0;
     }
+  }
+
+  &__stone {
+    inline-size: map-get($map: $spaces, $key: 5);
+  }
+
+  &__point {
+    display: flex;
+    flex-wrap: wrap;
+    gap: map-get($map: $spaces, $key: 2);
+    min-height: 6rem;
+    align-content: flex-start;
+    position: relative;
+  }
+
+  &__warn {
+    position: absolute;
+    bottom: map-get($map: $spaces, $key: 1);
+    font-size: map-get($map: $font-size-list, $key: "notice");
+    color: map-get($map: $colors, $key: "other-900");
   }
 }

@@ -4,20 +4,33 @@ import developmentTeamAvatar from "../../assets/characters/development-team-avat
 import productOwnerAvatar from "../../assets/characters/product-owner-avatar.svg"
 import scrumMasterAvatar from "../../assets/characters/scrum-master-avatar.svg"
 import whiteStone from "../../assets/icons/white-stone.svg"
+import redStone from "../../assets/icons/red-stone.svg"
 import { useModal } from "../../utilities"
 import { sprintPoint } from "../../data"
 import { Dragger, DroppableHint } from "../../components/dragger"
 import "./index.scss"
-import { useState } from "react"
+import { useState, useRef, useEffect } from "react"
+import Sortable from "sortablejs"
 
-const dragOrDrop = (item, index) => {
+const PointStone = ({ colorBoolean }) => {
+  return (
+    <img
+      src={colorBoolean ? whiteStone : redStone}
+      alt="計分"
+      className="sprint-point__stone"
+    />
+  )
+}
+
+const dragOrDrop = (item) => {
   if (item.substring(0, 4) === "drag") {
     const dragger = sprintPoint.drags[item]
     return (
       <Dragger
-        index={index}
         className="sprint-point__todo p_block-4"
-        key={item}>
+        key={item}
+        point={dragger.point}
+        id={item}>
         <div className="sprint-point__todo_left">
           <p>{dragger.content.firstLine}</p>
           <p>{dragger.content.secondLine ?? undefined}</p>
@@ -31,14 +44,121 @@ const dragOrDrop = (item, index) => {
   }
   if (item.substring(0, 4) === "drop") {
     return (
-      <DroppableHint index={index} key={item} className="sprint-point__drop" />
+      <DroppableHint
+        id={item}
+        key={item}
+        className="sprint-point__drop"
+        draggable={false}
+      />
     )
   }
 }
 
-const SprintPoint = ({ sprintPointRef }) => {
+const SprintPoint = ({ sprintPointRef, setButtonDisabled }) => {
   const [isModalShowed, modalRef, closeModal, removeModal] = useModal()
   const [pointData, setPointData] = useState(sprintPoint)
+  const [points, setPoint] = useState(0)
+  // TODO: 處理不會變紅色的問題！
+  const pointStones = []
+  for (let i = 1; i <= points; i++) {
+    if (i <= 20) {
+      pointStones.push(<PointStone key={i} colorBoolean={true} />)
+    } else {
+      pointStones.push(<PointStone key={i} colorBoolean={false} />)
+    }
+  }
+  // const [dragStartLocation, setDragStartLocation] = useState("drag")
+  const dragRef = useRef(null)
+  const dropRef = useRef(null)
+  useEffect(() => {
+    let correspondDrop = null
+    const handleOnChange = (evt) => {
+      const { item } = evt
+      correspondDrop = [...evt.to.children].filter(
+        (child) => child.id === `drop-${item.id.slice(-1)}`
+      )[0]
+      if (!correspondDrop) return
+      correspondDrop.style.display = "none"
+    }
+    const handleOnClone = (evt) => {
+      const { item, clone } = evt
+      clone.textContent = ""
+      clone.classList.remove("sprint-point__todo", "p_block-4", "dragger")
+      clone.classList.add("droppable-hint", "sprint-point__drop")
+      clone.id = `drop-${item.id.slice(-1)}`
+    }
+    const dragSortable = new Sortable(dragRef.current, {
+      group: {
+        name: "sprint-point",
+        put: ["dash-board"],
+        pull: "clone"
+      },
+      sort: false,
+      onChoose(evt) {
+        const { item } = evt
+        const { id } = item
+        if (id.includes("drop")) return
+      },
+      onEnd() {
+        if (!correspondDrop) return
+        correspondDrop.style.display = "block"
+        correspondDrop = null
+      },
+      onAdd() {
+        if (!correspondDrop) return
+        correspondDrop.remove()
+        correspondDrop = null
+      },
+      onClone(evt) {
+        handleOnClone(evt)
+        evt.clone.style.width = evt.item.offsetWidth.toString() + "px"
+        evt.clone.style.height = evt.item.offsetHeight.toString() + "px"
+      },
+      onChange(evt) {
+        handleOnChange(evt)
+      }
+    })
+    const dropSortable = new Sortable(dropRef.current, {
+      group: {
+        name: "dash-board",
+        put: ["sprint-point"],
+        pull: "clone"
+      },
+      sort: true,
+      invertSwap: true,
+      onAdd(evt) {
+        evt.item.removeAttribute("style")
+        if (!correspondDrop) return
+        correspondDrop.remove()
+        correspondDrop = null
+      },
+      onSort() {
+        const dragElements = document.querySelectorAll(".sprint-point__column_right .sprint-point__todo[id^='drag']")
+        let sumOfPoints = 0
+        dragElements.forEach(item => {
+          let point = Number.parseInt(item.dataset.point, 10)
+          sumOfPoints += point
+        })
+        setPoint(sumOfPoints)
+        if (sumOfPoints < 20) {
+          setButtonDisabled(false)
+        } else {
+          setButtonDisabled(true)
+        }
+      },
+      onClone(evt) {
+        handleOnClone(evt)
+        evt.clone.removeAttribute("data-point")
+      },
+      onChange(evt) {
+        handleOnChange(evt)
+      }
+    })
+    return () => {
+      dropSortable.destroy()
+      dragSortable.destroy()
+    }
+  }, [points])
   return (
     <section className="sprint-point scrum__inner" ref={sprintPointRef}>
       <div
@@ -111,20 +231,29 @@ const SprintPoint = ({ sprintPointRef }) => {
           <p className="h2 sprint-point__practice_title">
             產品待辦清單<span>Product Backlog</span>
           </p>
-          <ul className="sprint-point__column_left">
-            {pointData["column-left"].map((item, index) => {
-              return dragOrDrop(item, index)
+          <ul className="sprint-point__column_left" ref={dragRef}>
+            {pointData["column-left"].map((item) => {
+              return dragOrDrop(item)
             })}
           </ul>
         </div>
         <div className="sprint-point__practice_right">
           <div className="h2 sprint-point__practice_title">
             <p>開發 A 組的短衝待辦清單</p>
-            <div className="sprint-point__point"></div>
+            <div className="sprint-point__point">
+              {pointStones}
+              {points <= 20 ? (
+                ""
+              ) : (
+                <p className="sprint-point__warn">
+                  點數超過了唷~再試著調整一下!
+                </p>
+              )}
+            </div>
           </div>
-          <ul className="sprint-point__column_right">
-            {pointData["column-right"].map((item, index) => {
-              return dragOrDrop(item, index)
+          <ul ref={dropRef} className="sprint-point__column_right">
+            {pointData["column-right"].map((item) => {
+              return dragOrDrop(item)
             })}
           </ul>
         </div>

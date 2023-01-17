@@ -42,9 +42,9 @@ function App() {
           <div className="scrum__container">
             <ProductTodo
               productTodoRef={productTodoRef}
-              setButtonDisabled={() => setDisabled(false)}
+              setButtonDisabled={setDisabled}
             />
-            <SprintPoint sprintPointRef={sprintPointRef} />
+            <SprintPoint sprintPointRef={sprintPointRef} setButtonDisabled={setDisabled} />
             <div style={{ flex: "0 0 100%", backgroundColor: "blue" }}></div>
           </div>
           <Footer
